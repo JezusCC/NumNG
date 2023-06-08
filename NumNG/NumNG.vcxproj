@@ -140,9 +140,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\boot\main.cpp" />
+    <ClCompile Include="src\core\utils\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\preclude\preclude.h" />
+    <ClInclude Include="src\core\preclude\xtype.h" />
+    <ClInclude Include="src\core\utils\utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
