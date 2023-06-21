@@ -61,4 +61,106 @@ namespace ngUtil {
 	private:
 		ngString m_id;
 	};
+
+	/**
+	 * 创建一个时间轴对象，该时间轴记录自对象产生以来经过的tick数
+	 * 该tick长度取决于精度，目前提供的精度有
+	 * 秒
+	 * 毫秒
+	 * 微秒三种级别
+	 */
+	class Timeline {
+	public:
+		enum class Precision {
+			Second,
+			Milli,
+			Micro
+		};
+	public:
+		//创建一个精度为percision的时间轴
+		Timeline(Precision precision = Precision::Milli);
+		//用于定时恢复
+		Timeline(ngInt init_tick, Precision precision);
+
+		//获取自启动时运行的tick
+		ngInt getTick()const;
+
+	private:
+		//初始tick
+		ngInt m_init_tick;
+		//运行tick
+		ngInt m_tick;
+		//运行精度
+		Precision m_precision;
+	};
+
+	/**
+	 * 创建一个自带Timeline的定时器,精度为毫秒
+	 * 该定时器需要每个Frame进行更新，当timeline运行时间超过了设定好的时间
+	 * 该定时器停止
+	 * 定时器创建时处在就绪状态，通过start函数进行启动
+	 */
+	class Timer {
+	public:
+		/**
+		 * 定时器状态分为就绪、运行、停止三种
+		 */
+		enum class State {
+			Standby,
+			Running,
+			Stop
+		};
+	public:
+		//
+		Timer(int32 time,ngBool repeat = false);
+		Timer(const Timer& timer);
+
+		//启动定时器
+		void start();
+		//停止计时器
+		void stop();
+		//重置定时器
+		void reset();
+
+		//该函数必须每帧被调用
+		void update();
+		//获取运行计数
+		int32 getTick()const;
+		//
+		Timer::State getState()const;
+	private:
+		//重复运行标识，与一次性标识互斥,定时器仅处在一次性运行或重复运行两种状态
+		ngBool m_repeat;
+		//设定好的时间
+		int32 m_time;
+		//运行时tick计数
+		int32 m_tick_count;
+		//最后一次更新tick
+		int32 m_last_up_tick;
+		//运行状态
+		State m_state;
+		//
+		Timeline m_timeline;
+	};
+
+	class FPSCounter {
+	public:
+		FPSCounter();
+		FPSCounter(const FPSCounter&) = delete;
+		FPSCounter(const FPSCounter&&) = delete;
+		void operator=(const FPSCounter&) = delete;
+		void operator=(const FPSCounter&&) = delete;
+
+		~FPSCounter();
+
+		//该函数必须每帧被调用
+		void update();
+		//
+		int32 getFps()const;
+	private:
+		//创建一个一秒的重复定时器
+		Timer* m_timer;
+		//每帧叠加，每秒重置一次
+		int32 m_fps;
+	};
 }
