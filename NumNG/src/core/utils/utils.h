@@ -79,11 +79,13 @@ namespace ngUtil {
 	public:
 		//创建一个精度为percision的时间轴
 		Timeline(Precision precision = Precision::Milli);
-		//用于定时恢复
-		Timeline(ngInt init_tick, Precision precision);
 
 		//获取自启动时运行的tick
 		ngInt getTick()const;
+
+		ngFloat getSeconds()const;
+
+		Timeline::Precision getPrecision()const;
 
 	private:
 		//初始tick
@@ -92,6 +94,8 @@ namespace ngUtil {
 		ngInt m_tick;
 		//运行精度
 		Precision m_precision;
+
+		std::chrono::time_point<std::chrono::steady_clock> m_time_point;
 	};
 
 	/**
@@ -111,7 +115,10 @@ namespace ngUtil {
 			Stop
 		};
 	public:
-		//
+		/**
+		 * @param time milliseconds for timer
+		 * @param repeat when time over,timer will restart
+		 */
 		Timer(int32 time,ngBool repeat = false);
 		Timer(const Timer& timer);
 
@@ -124,21 +131,21 @@ namespace ngUtil {
 
 		//该函数必须每帧被调用
 		void update();
-		//获取运行计数
-		int32 getTick()const;
+		//
+		uint32 getTime()const;
 		//
 		Timer::State getState()const;
 	private:
 		//重复运行标识，与一次性标识互斥,定时器仅处在一次性运行或重复运行两种状态
 		ngBool m_repeat;
-		//设定好的时间
-		int32 m_time;
-		//运行时tick计数
-		int32 m_tick_count;
-		//最后一次更新tick
-		int32 m_last_up_tick;
 		//运行状态
 		State m_state;
+		//设定好的时间,毫秒数
+		uint32 m_time;
+		//运行时tick计数
+		ngInt m_tick_count;
+		//最后一次更新tick
+		ngInt m_last_up_tick;
 		//
 		Timeline m_timeline;
 	};
@@ -160,7 +167,9 @@ namespace ngUtil {
 	private:
 		//创建一个一秒的重复定时器
 		Timer* m_timer;
-		//每帧叠加，每秒重置一次
+		//
+		int32 m_fps_count;
+		//每秒计算一次
 		int32 m_fps;
 	};
 }

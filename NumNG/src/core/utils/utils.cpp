@@ -73,4 +73,141 @@ namespace ngUtil {
 	{
 		return this->m_id;
 	}
+	Timeline::Timeline(Precision precision)
+	{
+		this->m_init_tick = 0;
+		this->m_tick = 0;
+		this->m_precision = precision;
+		this->m_time_point = std::chrono::steady_clock::now();
+	}
+
+	ngInt Timeline::getTick() const
+	{
+		auto t_time = std::chrono::steady_clock::now();
+		switch (m_precision)
+		{
+		case ngUtil::Timeline::Precision::Second:
+			return std::chrono::duration_cast<std::chrono::seconds>(t_time - m_time_point).count();
+			break;
+		case ngUtil::Timeline::Precision::Milli:
+			return std::chrono::duration_cast<std::chrono::milliseconds>(t_time - m_time_point).count();
+			break;
+		case ngUtil::Timeline::Precision::Micro:
+			return std::chrono::duration_cast<std::chrono::microseconds>(t_time - m_time_point).count();
+			break;
+		default:
+			break;
+		}
+		return -1;
+	}
+
+	ngFloat Timeline::getSeconds() const
+	{
+		auto t_time = std::chrono::steady_clock::now();
+		std::chrono::duration<ngFloat> duration = std::chrono::duration_cast<std::chrono::seconds>(t_time - m_time_point);
+		return duration.count();
+	}
+
+	Timeline::Precision Timeline::getPrecision() const
+	{
+		return this->m_precision;
+	}
+
+	Timer::Timer(int32 time, ngBool repeat):m_timeline(Timeline(Timeline::Precision::Milli))
+	{
+		m_time = time;
+		m_repeat = repeat;
+		m_state = State::Standby;
+		m_tick_count = 0;
+		m_last_up_tick = 0;
+	}
+
+	Timer::Timer(const Timer& timer) :m_timeline(Timeline(Timeline::Precision::Milli))
+	{
+		m_time = timer.m_time;
+		m_repeat = timer.m_repeat;
+		m_state = timer.m_state;
+		m_tick_count = timer.m_tick_count;
+		m_last_up_tick = timer.m_last_up_tick;
+	}
+
+	void Timer::start()
+	{
+		m_state = State::Running;
+	}
+
+	void Timer::stop()
+	{
+		m_state = State::Stop;
+	}
+
+	void Timer::reset()
+	{
+		m_tick_count = 0;
+		m_state = State::Standby;
+	}
+
+	void Timer::update()
+	{
+		switch (m_state)
+		{
+		case ngUtil::Timer::State::Standby:
+			m_last_up_tick = m_timeline.getTick();
+			break;
+		case ngUtil::Timer::State::Running:
+			m_tick_count += m_timeline.getTick() - m_last_up_tick;
+			m_last_up_tick = m_timeline.getTick();
+			if (m_tick_count >= m_time) {
+				m_state = State::Stop;
+			}
+			break;
+		case ngUtil::Timer::State::Stop:
+			if (m_repeat) {
+				reset();
+				start();
+			}
+			break;
+		default:
+			break;
+		}
+	}
+
+	uint32 Timer::getTime() const
+	{
+		return m_tick_count;
+	}
+
+	ngUtil::Timer::State Timer::getState() const
+	{
+		return m_state;
+	}
+
+	FPSCounter::FPSCounter()
+	{
+		m_fps = 0;
+		m_fps_count = 0;
+		m_timer = new Timer(1000, true);
+		m_timer->start();
+	}
+
+	FPSCounter::~FPSCounter()
+	{
+		delete m_timer;
+	}
+
+	void FPSCounter::update()
+	{
+		m_fps_count++;
+		if (m_timer->getState()==Timer::State::Stop) {
+			m_fps = m_fps_count;
+			m_fps_count = 0;
+		}
+		m_timer->update();
+	}
+
+	int32 FPSCounter::getFps() const
+	{
+		return m_fps;
+	}
+
 }
