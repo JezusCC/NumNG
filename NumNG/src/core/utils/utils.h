@@ -67,7 +67,8 @@ namespace ngUtil {
 	 * 该tick长度取决于精度，目前提供的精度有
 	 * 秒
 	 * 毫秒
-	 * 微秒三种级别
+	 * 微秒
+	 * 三种级别,默认精度为毫秒
 	 */
 	class Timeline {
 	public:
@@ -150,7 +151,11 @@ namespace ngUtil {
 		Timeline m_timeline;
 	};
 
-	class FPSCounter {
+	/**
+	 * 创建一个FPS计数器，需要每帧循环调用
+	 * FPS计数器使用时钟计数法，每秒更新一次FPS
+	 */
+	class FPSCounter :public UtilBase{
 	public:
 		FPSCounter();
 		FPSCounter(const FPSCounter&) = delete;
@@ -164,6 +169,8 @@ namespace ngUtil {
 		void update();
 		//
 		int32 getFps()const;
+
+		ngString toString();
 	private:
 		//创建一个一秒的重复定时器
 		Timer* m_timer;

@@ -210,4 +210,11 @@ namespace ngUtil {
 		return m_fps;
 	}
 
+	ngString FPSCounter::toString()
+	{
+		std::stringstream ss;
+		ss << "FPS:" << m_fps;
+		return ss.str();
+	}
+
 }
