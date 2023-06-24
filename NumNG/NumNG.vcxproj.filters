@@ -21,6 +21,15 @@
     <ClCompile Include="src\core\utils\utils.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\entry\entrys.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\application\application.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\application\window2d.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\preclude\preclude.h">
@@ -291,6 +300,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="thirdpart\include\SDL2\SDL_vulkan.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\entry\entrys.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\application\application.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\application\window2d.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
