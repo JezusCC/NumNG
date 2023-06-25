@@ -80,6 +80,18 @@ namespace ngCore {
 			case SDL_EventType::SDL_QUIT:
 				m_loop = false;
 				break;
+			//键盘事件
+			case SDL_EventType::SDL_KEYDOWN:
+			case SDL_EventType::SDL_KEYUP:
+
+				break;
+			//鼠标事件
+			case SDL_EventType::SDL_MOUSEBUTTONDOWN:
+			case SDL_EventType::SDL_MOUSEBUTTONUP:
+			case SDL_EventType::SDL_MOUSEMOTION:
+			case SDL_EventType::SDL_MOUSEWHEEL:
+
+				break;
 			default:
 				break;
 			}

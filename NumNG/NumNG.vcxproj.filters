@@ -311,6 +311,9 @@
     <ClInclude Include="src\core\application\window2d.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\core\application\app_event_dispatcher.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="thirdpart\lib\LICENSE.freetype.txt" />

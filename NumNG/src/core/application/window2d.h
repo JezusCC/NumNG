@@ -5,6 +5,7 @@ struct SDL_Window;
 struct SDL_Renderer;
 
 namespace ngCore {
+
 	/**
 	 * 创建一个包含2D渲染器的窗口，该窗口具有相关上下文和SDL渲染器
 	 */

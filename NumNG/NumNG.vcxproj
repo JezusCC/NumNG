@@ -191,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\application\application.h" />
+    <ClInclude Include="src\core\application\app_event_dispatcher.h" />
     <ClInclude Include="src\core\application\window2d.h" />
     <ClInclude Include="src\core\entry\entrys.h" />
     <ClInclude Include="src\core\preclude\preclude.h" />
