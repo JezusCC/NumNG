@@ -188,15 +188,32 @@
     <ClCompile Include="src\core\application\window2d.cpp" />
     <ClCompile Include="src\core\entry\entrys.cpp" />
     <ClCompile Include="src\core\utils\utils.cpp" />
+    <ClCompile Include="src\test\test_main.cpp" />
+    <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui.cpp" />
+    <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui_demo.cpp" />
+    <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui_draw.cpp" />
+    <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui_impl_sdl.cpp" />
+    <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui_impl_sdlrenderer.cpp" />
+    <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui_tables.cpp" />
+    <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\application\application.h" />
     <ClInclude Include="src\core\application\app_event_dispatcher.h" />
+    <ClInclude Include="src\core\application\kbms_listener.h" />
     <ClInclude Include="src\core\application\window2d.h" />
     <ClInclude Include="src\core\entry\entrys.h" />
     <ClInclude Include="src\core\preclude\preclude.h" />
     <ClInclude Include="src\core\preclude\xtype.h" />
     <ClInclude Include="src\core\utils\utils.h" />
+    <ClInclude Include="thirdpart\include\imgui4sdl2raw\imconfig.h" />
+    <ClInclude Include="thirdpart\include\imgui4sdl2raw\imgui.h" />
+    <ClInclude Include="thirdpart\include\imgui4sdl2raw\imgui_impl_sdl.h" />
+    <ClInclude Include="thirdpart\include\imgui4sdl2raw\imgui_impl_sdlrenderer.h" />
+    <ClInclude Include="thirdpart\include\imgui4sdl2raw\imgui_internal.h" />
+    <ClInclude Include="thirdpart\include\imgui4sdl2raw\imstb_rectpack.h" />
+    <ClInclude Include="thirdpart\include\imgui4sdl2raw\imstb_textedit.h" />
+    <ClInclude Include="thirdpart\include\imgui4sdl2raw\imstb_truetype.h" />
     <ClInclude Include="thirdpart\include\SDL2\begin_code.h" />
     <ClInclude Include="thirdpart\include\SDL2\close_code.h" />
     <ClInclude Include="thirdpart\include\SDL2\SDL.h" />
@@ -286,6 +303,7 @@
     <ClInclude Include="thirdpart\include\SDL2\SDL_vulkan.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="thirdpart\include\imgui4sdl2raw\LICENSE.txt" />
     <Text Include="thirdpart\lib\LICENSE.freetype.txt" />
     <Text Include="thirdpart\lib\LICENSE.zlib.txt" />
   </ItemGroup>

@@ -3,6 +3,7 @@
 
 struct SDL_Window;
 struct SDL_Renderer;
+struct ImGuiContext;
 
 namespace ngCore {
 
@@ -39,5 +40,7 @@ namespace ngCore {
 		ngBool m_fullscreen;
 		SDL_Window* m_window;
 		SDL_Renderer* m_renderer;
+		//imgui context
+		ImGuiContext* m_gui_context;
 	};
 }

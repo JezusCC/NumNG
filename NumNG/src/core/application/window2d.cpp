@@ -1,11 +1,16 @@
 #include "window2d.h"
 #include "SDL2/SDL.h"
+#include "imgui4sdl2raw/imgui.h"
+#include "imgui4sdl2raw/imgui_impl_sdl.h"
+#include "imgui4sdl2raw/imgui_impl_sdlrenderer.h"
+
 namespace ngCore {
 	Window2D::Window2D(const ngString& title, uint32 width, uint32 height) :Application(title, width, height)
 	{
 		if (!create()) {
 			m_window = nullptr;
 			m_renderer = nullptr;
+			m_gui_context = nullptr;
 		}
 	}
 

@@ -30,6 +30,30 @@
     <ClCompile Include="src\core\application\window2d.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui_demo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui_draw.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui_impl_sdl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui_impl_sdlrenderer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui_tables.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui_widgets.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\test_main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\preclude\preclude.h">
@@ -314,10 +338,38 @@
     <ClInclude Include="src\core\application\app_event_dispatcher.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\core\application\kbms_listener.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdpart\include\imgui4sdl2raw\imconfig.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdpart\include\imgui4sdl2raw\imgui.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdpart\include\imgui4sdl2raw\imgui_impl_sdl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdpart\include\imgui4sdl2raw\imgui_impl_sdlrenderer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdpart\include\imgui4sdl2raw\imgui_internal.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdpart\include\imgui4sdl2raw\imstb_rectpack.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdpart\include\imgui4sdl2raw\imstb_textedit.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="thirdpart\include\imgui4sdl2raw\imstb_truetype.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="thirdpart\lib\LICENSE.freetype.txt" />
     <Text Include="thirdpart\lib\LICENSE.zlib.txt" />
+    <Text Include="thirdpart\include\imgui4sdl2raw\LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="thirdpart\lib\SDL2.lib" />
