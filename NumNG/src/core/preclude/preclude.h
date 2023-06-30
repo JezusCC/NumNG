@@ -5,6 +5,7 @@
 #include <random>
 #include <functional>
 #include <iomanip>
+#include <map>
 
 #include "xtype.h"
 

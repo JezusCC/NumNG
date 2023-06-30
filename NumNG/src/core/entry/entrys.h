@@ -11,12 +11,14 @@ namespace ngCore {
 	struct ngEnviroment {
 		//环境初始化标识
 		ngBool env_init;
+		ngBool graphic_lib_init;
+		ngBool texture_lib_init;
+		ngBool font_lib_init;
+		ngBool audio_lib_init;
 		//程序运行参数个数
 		int32 arg_nums;
 		//程序运行参数值指针
 		ngChar** arg_array;
-		//窗口
-		Window2D* window;
 	};
 
 	/**

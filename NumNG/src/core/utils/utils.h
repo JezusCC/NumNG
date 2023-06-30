@@ -179,4 +179,47 @@ namespace ngUtil {
 		//每秒计算一次
 		int32 m_fps;
 	};
+
+	class Color :public UtilBase {
+	public:
+		Color(float32 r, float32 g, float32 b, float32 a);
+		Color(const Color& color);
+		
+		~Color();
+
+		void setColor(float32 r, float32 g, float32 b, float32 a);
+		void setColor(const Color& color);
+
+		float32 getR()const;
+		float32 getG()const;
+		float32 getB()const;
+		float32 getA()const;
+
+		ngBool operator==(const Color& color)const;
+		ngBool operator!=(const Color& color)const;
+
+		ngString toString()override;
+	private:
+		float32 m_r;
+		float32 m_g;
+		float32 m_b;
+		float32 m_a;
+	};
+
+	/**
+	 * 将基类指针转换成子类指针
+	 * 若转换成功返回该指针，否则返回空
+	 */
+	template<typename TargetType, typename SourceType>
+	TargetType* Cast(SourceType* source) {
+		return dynamic_cast<TargetType*>(source);
+	}
+	/**
+	 * 将源指针转换成目标指针
+	 * 若转换成功返回该指针，否则返回空
+	 */
+	template<typename TargetType, typename SourceType>
+	TargetType* ForceCast(SourceType* source) {
+		return static_cast<TargetType*>(source);
+	}
 }

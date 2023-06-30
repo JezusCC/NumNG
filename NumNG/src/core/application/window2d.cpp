@@ -1,8 +1,13 @@
 #include "window2d.h"
 #include "SDL2/SDL.h"
 #include "imgui4sdl2raw/imgui.h"
+#include "imgui4sdl2raw/imgui_internal.h"
 #include "imgui4sdl2raw/imgui_impl_sdl.h"
 #include "imgui4sdl2raw/imgui_impl_sdlrenderer.h"
+
+#if !SDL_VERSION_ATLEAST(2,0,17)
+#error This backend requires SDL 2.0.17+ because of SDL_RenderGeometry() function
+#endif
 
 namespace ngCore {
 	Window2D::Window2D(const ngString& title, uint32 width, uint32 height) :Application(title, width, height)
@@ -16,12 +21,18 @@ namespace ngCore {
 
 	Window2D::~Window2D()
 	{
+		if (m_gui_context) {
+			ImGui_ImplSDLRenderer_Shutdown();
+			ImGui_ImplSDL2_Shutdown();
+			ImGui::DestroyContext(m_gui_context);
+		}
 		if (m_renderer) {
 			SDL_DestroyRenderer(m_renderer);
 		}
 		if (m_window) {
 			SDL_DestroyWindow(m_window);
 		}
+		SDL_LogInfo(SDL_LogCategory::SDL_LOG_CATEGORY_APPLICATION, "Clean up Environment:Window2D!");
 	}
 
 	SDL_Window* Window2D::getWindowInstance() const
@@ -32,6 +43,21 @@ namespace ngCore {
 	SDL_Renderer* Window2D::getRendererInstance() const
 	{
 		return m_renderer;
+	}
+
+	ImGuiContext* Window2D::getGuiContext() const
+	{
+		return m_gui_context;
+	}
+
+	ImGuiIO Window2D::getGuiOption() const
+	{
+		return ImGui::GetIO();
+	}
+
+	ngFloat Window2D::getFramerate() const
+	{
+		return 1000.f / ImGui::GetIO().Framerate;
 	}
 
 	void Window2D::setTitle(const ngString& title)
@@ -80,6 +106,12 @@ namespace ngCore {
 	{
 		SDL_Event ev;
 		while (SDL_PollEvent(&ev) != 0) {
+			ImGui_ImplSDL2_ProcessEvent(&ev);
+
+			if (ev.type == SDL_WINDOWEVENT && ev.window.event == SDL_WINDOWEVENT_CLOSE && ev.window.windowID == SDL_GetWindowID(m_window)) {
+				m_loop = false;
+			}
+
 			switch (ev.type)
 			{
 			case SDL_EventType::SDL_QUIT:
@@ -105,8 +137,10 @@ namespace ngCore {
 
 	void Window2D::clearBuffer()
 	{
+		ImGui::Render();
 		SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 255);
 		SDL_RenderClear(m_renderer);
+		ImGui_ImplSDLRenderer_RenderDrawData(ImGui::GetDrawData());
 		SDL_RenderPresent(m_renderer);
 	}
 
@@ -126,9 +160,26 @@ namespace ngCore {
 		if (ret != 0) {
 			m_window = nullptr;
 			m_renderer = nullptr;
+			SDL_LogError(SDL_LogCategory::SDL_LOG_CATEGORY_APPLICATION, "Create Environment.Window2D failure!");
 			return false;
 		}
 		SDL_SetWindowTitle(m_window, m_title.c_str());
+
+		IMGUI_CHECKVERSION();
+		m_gui_context = ImGui::CreateContext();
+		if (!m_gui_context) {
+			SDL_LogError(SDL_LogCategory::SDL_LOG_CATEGORY_APPLICATION, "Can not create GUI context!");
+		}
+		ImGui::SetCurrentContext(m_gui_context);
+
+		//默认使用暗色主题
+		ImGui::StyleColorsDark();
+		SDL_LogInfo(SDL_LogCategory::SDL_LOG_CATEGORY_APPLICATION,"Set default Gui theme:Dark.");
+
+		ImGui_ImplSDL2_InitForSDLRenderer(m_window, m_renderer);
+		ImGui_ImplSDLRenderer_Init(m_renderer);
+
+		SDL_LogInfo(SDL_LogCategory::SDL_LOG_CATEGORY_APPLICATION,"Create Window2D success!");
 		return true;
 	}
 }

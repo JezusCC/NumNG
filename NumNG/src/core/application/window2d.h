@@ -4,6 +4,7 @@
 struct SDL_Window;
 struct SDL_Renderer;
 struct ImGuiContext;
+struct ImGuiIO;
 
 namespace ngCore {
 
@@ -17,7 +18,16 @@ namespace ngCore {
 
 		SDL_Window* getWindowInstance()const;
 		SDL_Renderer* getRendererInstance()const;
+		ImGuiContext* getGuiContext()const;
+		ImGuiIO getGuiOption()const;
 
+		/**
+		 * 获取FPS
+		 */
+		ngFloat getFramerate()const;
+		/**
+		 * 设置窗口标题
+		 */
 		void setTitle(const ngString& title);
 		void setPosition(uint32 pos_x, uint32 pos_y);
 		void setPositionX(uint32 pos_x);

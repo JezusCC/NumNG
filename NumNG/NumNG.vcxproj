@@ -187,6 +187,7 @@
     <ClCompile Include="src\core\application\application.cpp" />
     <ClCompile Include="src\core\application\window2d.cpp" />
     <ClCompile Include="src\core\entry\entrys.cpp" />
+    <ClCompile Include="src\core\utils\config_loader.cpp" />
     <ClCompile Include="src\core\utils\utils.cpp" />
     <ClCompile Include="src\test\test_main.cpp" />
     <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui.cpp" />
@@ -199,12 +200,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\application\application.h" />
-    <ClInclude Include="src\core\application\app_event_dispatcher.h" />
+    <ClInclude Include="src\core\application\app_event.h" />
     <ClInclude Include="src\core\application\kbms_listener.h" />
     <ClInclude Include="src\core\application\window2d.h" />
     <ClInclude Include="src\core\entry\entrys.h" />
+    <ClInclude Include="src\core\gui\gui_item_base.h" />
     <ClInclude Include="src\core\preclude\preclude.h" />
     <ClInclude Include="src\core\preclude\xtype.h" />
+    <ClInclude Include="src\core\utils\config_loader.h" />
+    <ClInclude Include="src\core\utils\event_dispatcher.h" />
     <ClInclude Include="src\core\utils\utils.h" />
     <ClInclude Include="thirdpart\include\imgui4sdl2raw\imconfig.h" />
     <ClInclude Include="thirdpart\include\imgui4sdl2raw\imgui.h" />

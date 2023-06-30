@@ -7,26 +7,31 @@ namespace ngCore {
 
 	ngEnviroment* createNgEnviroment(int argc,char** argv)
 	{	
+		ngEnviroment* env = new ngEnviroment;
+		::memset(env, 0, sizeof(ngEnviroment));
+		env->env_init = false;
 		if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-			return nullptr;
+			env->graphic_lib_init = false;
 		}
+		env->graphic_lib_init = true;
 		int img_flag = IMG_InitFlags::IMG_INIT_JPG | IMG_InitFlags::IMG_INIT_PNG | IMG_InitFlags::IMG_INIT_TIF | IMG_InitFlags::IMG_INIT_WEBP;
 		if (IMG_Init(img_flag) == 0) {
-			return nullptr;
+			env->texture_lib_init = false;
 		}
+		env->texture_lib_init = true;
 		if (TTF_Init() != 0) {
-			return nullptr;
+			env->font_lib_init = false;
 		}
+		env->font_lib_init = true;
 		int mix_flag = MIX_InitFlags::MIX_INIT_FLAC | MIX_InitFlags::MIX_INIT_MP3 
 			| MIX_InitFlags::MIX_INIT_MID |MIX_InitFlags::MIX_INIT_OGG | MIX_InitFlags::MIX_INIT_MOD | MIX_InitFlags::MIX_INIT_OPUS;
 		if (Mix_Init(mix_flag) == 0) {
-			return nullptr;
+			env->audio_lib_init = false;
 		}
-		ngEnviroment* env = new ngEnviroment;
+		env->audio_lib_init = true;
 		env->arg_nums = argc;
 		env->arg_array = argv;
 		env->env_init = true;
-		env->window = nullptr;
 		return env;
 	}
 
