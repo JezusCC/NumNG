@@ -1,7 +1,6 @@
 #pragma once
 
 #include "./event_type.h"
-#include "./event_data.h"
 #include "../utils.h"
 
 namespace ngUtils {
@@ -19,8 +18,7 @@ namespace ngUtils {
 		* 分发事件，可将事件分发给所有订阅者
 		* @param eventData应是一个封装参数，为结构体
 		*/
-		template<typename T>
-		void dispatch(EventType eventType,EventData<T>* eventData){
+		void dispatch(EventType eventType, EventData* eventData) {
 			if (m_handlers.find(eventType) != m_handlers.end()) {
 				const auto& handlers = m_handlers[eventType];
 				for (auto& handler : handlers) {

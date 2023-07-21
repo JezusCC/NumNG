@@ -7,27 +7,40 @@
 
 #include "../core/utils/eventDispatcher/event_dispatcher.h"
 
-struct Test {
-	int32 a;
+class MyEventData :public ngUtils::EventData {
+public:
+	MyEventData(int _a) :a(_a) {}
+	int a;
 };
 
-EV_CUSTOM_EVENT_DATA_DEFINE(Test, data);
-
-void func(void* ev) {
-	auto st = ngUtils::ForceCast<EV_GET_CUSTOM_EVENT_DATA_TYPE(Test)>(ev);
-	st->data.a = 10;
+void func(ngUtils::EventData* eventData) {
+	auto* st = ngUtils::DynamicCast<MyEventData>(eventData);
+	st->a = 10;
 }
+
+class A {
+public:
+	void rc(ngUtils::EventData* eventData) {
+		auto* st = ngUtils::DynamicCast<MyEventData>(eventData);
+		std::cout << "====>" << st->a;
+		st->a = 66;
+		std::cout << "====>" << st->a;
+	}
+};
 
 int main(int argc, char* argv[]) {
 
 	auto env = ngCore::createNgEnviroment(argc, argv);
 
+	A a;
+
 	ngUtils::EventDispatcher dispathcer;
 	dispathcer.subscribe(ngUtils::EventType::EVENT_APPLICATION, EV_CUSTOM_EVENT_FUNCTION(func));
+	dispathcer.subscribe(ngUtils::EventType::EVENT_APPLICATION, EV_CUSTOM_CLASS_EVENT_FUNCTION(A::rc,a));
 
-	EV_GET_CUSTOM_EVENT_DATA_TYPE(Test) st = { 5 };
+	ngUtils::EventData* st = new MyEventData{ 5 };
 
-	dispathcer.dispatch(ngUtils::EventType::EVENT_APPLICATION,&st);
+	dispathcer.dispatch(ngUtils::EventType::EVENT_APPLICATION,st);
 
 	dispathcer.unsubscribe(ngUtils::EventType::EVENT_APPLICATION, EV_CUSTOM_EVENT_FUNCTION(func));
 
