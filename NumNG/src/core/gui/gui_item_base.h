@@ -4,11 +4,14 @@
 
 namespace ngCore {
 	struct Style {
+		//
+		uint32 width;
+		uint32 height;
 		//position
-		uint32 top;
-		uint32 right;
-		uint32 bottom;
-		uint32 left;
+		int32 top;
+		int32 right;
+		int32 bottom;
+		int32 left;
 		//padding
 		uint32 padding_top;
 		uint32 padding_right;
@@ -20,8 +23,8 @@ namespace ngCore {
 		uint32 margin_bottom;
 		uint32 margin_left;
 		//color
-		ngUtil::Color color;
-		ngUtil::Color background_color;
+		ngUtils::Color color;
+		ngUtils::Color background_color;
 	};
 
 	class GuiItemBase {
@@ -33,7 +36,7 @@ namespace ngCore {
 		GuiItemBase(const GuiItemBase& other);
 		virtual ~GuiItemBase();
 
-		const ngUtil::UUID& getId()const;
+		const ngUtils::UUID& getId()const;
 		const ngString& getName()const;
 
 		void setStyle(Style style);
@@ -41,7 +44,7 @@ namespace ngCore {
 
 	protected:
 		Style m_style;
-		ngUtil::UUID m_uuid;
+		ngUtils::UUID m_uuid;
 		ngString m_name;
 	};
 }

@@ -18,9 +18,6 @@
     <ClCompile Include="src\boot\main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\utils\utils.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="src\core\entry\entrys.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -54,7 +51,31 @@
     <ClCompile Include="src\test\test_main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\utils\config_loader.cpp">
+    <ClCompile Include="src\core\utils\configLoader\config_loader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\utils\eventDispatcher\event_dispatcher.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\utils\common\common.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\utils\color\color_utils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\utils\hash\hash_utils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\utils\hash\uuid_utils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\utils\timer\timer_utils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\utils\timer\timeline.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\utils\fps\fps_utils.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -371,10 +392,40 @@
     <ClInclude Include="src\core\gui\gui_item_base.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\utils\config_loader.h">
+    <ClInclude Include="src\core\utils\configLoader\config_loader.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\utils\event_dispatcher.h">
+    <ClInclude Include="src\core\utils\eventDispatcher\event_dispatcher.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\utils\FPM\fpm_utils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\utils\eventDispatcher\event_data.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\utils\eventDispatcher\event_type.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\utils\common\common.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\utils\color\color_utils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\utils\hash\hash_utils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\utils\hash\uuid_utils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\utils\timer\timer_utils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\utils\timer\timeline.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\utils\fps\fps_utils.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

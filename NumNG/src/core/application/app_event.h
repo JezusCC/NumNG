@@ -1,6 +1,7 @@
 #pragma once
-#include "../utils/event_dispatcher.h"
-namespace ngCore {
+#include "../utils/eventDispatcher/event_dispatcher.h"
+
+namespace Core {
 	/**
 	 * Êó±êÊı¾İ
 	 */

@@ -5,9 +5,31 @@
 #include "imgui4sdl2raw/imgui_impl_sdl.h"
 #include "imgui4sdl2raw/imgui_impl_sdlrenderer.h"
 
+#include "../core/utils/eventDispatcher/event_dispatcher.h"
+
+struct Test {
+	int32 a;
+};
+
+EV_CUSTOM_EVENT_DATA_DEFINE(Test, data);
+
+void func(void* ev) {
+	auto st = ngUtils::ForceCast<EV_GET_CUSTOM_EVENT_DATA_TYPE(Test)>(ev);
+	st->data.a = 10;
+}
+
 int main(int argc, char* argv[]) {
 
 	auto env = ngCore::createNgEnviroment(argc, argv);
+
+	ngUtils::EventDispatcher dispathcer;
+	dispathcer.subscribe(ngUtils::EventType::EVENT_APPLICATION, EV_CUSTOM_EVENT_FUNCTION(func));
+
+	EV_GET_CUSTOM_EVENT_DATA_TYPE(Test) st = { 5 };
+
+	dispathcer.dispatch(ngUtils::EventType::EVENT_APPLICATION,&st);
+
+	dispathcer.unsubscribe(ngUtils::EventType::EVENT_APPLICATION, EV_CUSTOM_EVENT_FUNCTION(func));
 
 	ngCore::Window2D window("Hello", 1366, 768);
 
