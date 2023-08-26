@@ -6,6 +6,9 @@
 #include <functional>
 #include <iomanip>
 #include <map>
+#include <limits>
+#include <stdint.h>
+#include <algorithm>
 
 #include "xtype.h"
 

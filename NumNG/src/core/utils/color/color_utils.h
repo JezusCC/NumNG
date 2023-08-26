@@ -5,27 +5,32 @@
 namespace ngUtils {
 	class Color :public UtilBase {
 	public:
-		Color(float32 r, float32 g, float32 b, float32 a);
+		Color(ngFloat r, ngFloat g, ngFloat b, ngFloat a);
 		Color(const Color& color);
 
 		~Color() = default;
 
-		void setColor(float32 r, float32 g, float32 b, float32 a);
+		void setColor(ngFloat r, ngFloat g, ngFloat b, ngFloat a);
 		void setColor(const Color& color);
 
-		float32 getR()const;
-		float32 getG()const;
-		float32 getB()const;
-		float32 getA()const;
+		ngFloat getR()const;
+		ngFloat getG()const;
+		ngFloat getB()const;
+		ngFloat getA()const;
 
 		ngBool operator==(const Color& color)const;
 		ngBool operator!=(const Color& color)const;
 
 		ngString toString()override;
 	private:
-		float32 m_r;
-		float32 m_g;
-		float32 m_b;
-		float32 m_a;
+		ngFloat m_r;
+		ngFloat m_g;
+		ngFloat m_b;
+		ngFloat m_a;
 	};
+
+
+	uint64 _ng_str_to_hex(ngString value);
+
+	Color ParseStrToColor(ngString str);
 }

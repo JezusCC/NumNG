@@ -44,6 +44,10 @@ int main(int argc, char* argv[]) {
 
 	dispathcer.unsubscribe(ngUtils::EventType::EVENT_APPLICATION, EV_CUSTOM_EVENT_FUNCTION(func));
 
+	ngFpm::NumricMapping<ngFloat>(127, 0, 255, 0.0, 1.0);
+
+	ngUtils::Color color = ngUtils::ParseStrToColor("#ffee3399");
+
 	ngCore::Window2D window("Hello", 1366, 768);
 
 	bool show_another_window = false;

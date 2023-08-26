@@ -25,6 +25,7 @@ namespace ngCore {
 		//color
 		ngUtils::Color color;
 		ngUtils::Color background_color;
+		float32 opacity;
 	};
 
 	class GuiItemBase {

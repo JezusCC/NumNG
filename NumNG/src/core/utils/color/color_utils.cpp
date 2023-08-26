@@ -1,7 +1,8 @@
 #include "./color_utils.h"
+//#include <string>
 
 namespace ngUtils {
-	Color::Color(float32 r, float32 g, float32 b, float32 a)
+	Color::Color(ngFloat r, ngFloat g, ngFloat b, ngFloat a)
 	{
 		m_r = r;
 		m_g = g;
@@ -17,7 +18,7 @@ namespace ngUtils {
 		m_a = color.m_a;
 	}
 
-	void Color::setColor(float32 r, float32 g, float32 b, float32 a)
+	void Color::setColor(ngFloat r, ngFloat g, ngFloat b, ngFloat a)
 	{
 		m_r = r;
 		m_g = g;
@@ -33,22 +34,22 @@ namespace ngUtils {
 		m_a = color.m_a;
 	}
 
-	float32 Color::getR() const
+	ngFloat Color::getR() const
 	{
 		return m_r;
 	}
 
-	float32 Color::getG() const
+	ngFloat Color::getG() const
 	{
 		return m_g;
 	}
 
-	float32 Color::getB() const
+	ngFloat Color::getB() const
 	{
 		return m_b;
 	}
 
-	float32 Color::getA() const
+	ngFloat Color::getA() const
 	{
 		return m_a;
 	}
@@ -63,7 +64,7 @@ namespace ngUtils {
 	ngBool Color::operator!=(const Color& color) const
 	{
 		ngBool flag = false;
-		constexpr float32 epsilon = 0.000001f;
+		constexpr ngFloat epsilon = 0.000001f;
 		flag = ngFpm::isEqual(m_r, color.m_r, epsilon) && ngFpm::isEqual(m_g, color.m_g, epsilon)
 			&& ngFpm::isEqual(m_b, color.m_b, epsilon) && ngFpm::isEqual(m_a, color.m_a, epsilon);
 		return flag == false;
@@ -72,9 +73,78 @@ namespace ngUtils {
 	ngBool Color::operator==(const Color& color) const
 	{
 		ngBool flag = true;
-		constexpr float32 epsilon = 0.000001f;
+		constexpr ngFloat epsilon = 0.000001f;
 		flag = ngFpm::isEqual(m_r, color.m_r, epsilon) && ngFpm::isEqual(m_g, color.m_g, epsilon)
 			&& ngFpm::isEqual(m_b, color.m_b, epsilon) && ngFpm::isEqual(m_a, color.m_a, epsilon);
 		return flag == true;
+	}
+	uint64 _ng_str_to_hex(ngString value)
+	{
+		uint64 val;
+		std::stringstream ss;
+		ss << std::hex << value;
+		ss >> val;
+		//val = std::stoll("0x" + value, 0, 16);
+		return val;
+	}
+	Color ParseStrToColor(ngString str)
+	{
+		try {
+			int32 len = str.size();
+			if (str[0] != '#') {
+				throw std::exception("Invalid Color Format");
+			}
+			ngString rstr;
+			ngString gstr;
+			ngString bstr;
+			ngString astr;
+			ngFloat r;
+			ngFloat g;
+			ngFloat b;
+			ngFloat a;
+			if (len == 4) {
+				//#fff
+				rstr.push_back(str[1]);
+				rstr.push_back(str[1]);
+				gstr.push_back(str[2]);
+				gstr.push_back(str[2]);
+				bstr.push_back(str[3]);
+				bstr.push_back(str[3]);
+				astr += "ff";
+			}
+			else if (len == 7) {
+				rstr.push_back(str[1]);
+				rstr.push_back(str[2]);
+				gstr.push_back(str[3]);
+				gstr.push_back(str[4]);
+				bstr.push_back(str[5]);
+				bstr.push_back(str[6]);
+				astr += "ff";
+			}
+			else if (len == 9) {
+				rstr.push_back(str[1]);
+				rstr.push_back(str[2]);
+				gstr.push_back(str[3]);
+				gstr.push_back(str[4]);
+				bstr.push_back(str[5]);
+				bstr.push_back(str[6]);
+				astr.push_back(str[7]);
+				astr.push_back(str[8]);
+			}
+			else {
+				throw std::exception("Invalid Color Format");
+			}
+			std::stringstream ss;
+
+			r = ngFpm::NumricMapping<ngFloat>(_ng_str_to_hex(rstr), 0, 255, 0.0, 1.0);
+			g = ngFpm::NumricMapping<ngFloat>(_ng_str_to_hex(gstr), 0, 255, 0.0, 1.0);
+			b = ngFpm::NumricMapping<ngFloat>(_ng_str_to_hex(bstr), 0, 255, 0.0, 1.0);
+			a = ngFpm::NumricMapping<ngFloat>(_ng_str_to_hex(astr), 0, 255, 0.0, 1.0);
+
+			return Color(r, g, b, a);
+		}
+		catch (std::exception& e) {
+			std::cout << "Utils Error:" << e.what() << std::endl;
+		}
 	}
 }
