@@ -1,42 +1,104 @@
 #include "./file.h"
-#include <iomanip>
-
 
 namespace ngFileSystem {
 
-    File::File(const ngString& filePath) : path(filePath) {}
+    namespace ngStdFileSystem = std::filesystem;
 
-    File::~File() {}
+    File::File(const ngString& filePath) : path(filePath), content(nullptr) {
+        initialize();
+    }
+
+    File::~File() {
+        delete[] content;
+    }
+
+    void File::initialize() {
+        ngStdFileSystem::path filePath(path);
+
+        isExists = ngStdFileSystem::exists(filePath);
+        isFileFlag = ngStdFileSystem::is_regular_file(filePath);
+
+        if (!isExists || !isFileFlag) {
+            return;
+        }
+
+        fileName = filePath.filename().string();
+        extensionsName = filePath.extension().string();
+        fileSize = ngStdFileSystem::file_size(filePath);
+        fileType = ngStdFileSystem::path(filePath).replace_extension().string();
+        modificationTime = ngStdFileSystem::last_write_time(filePath).time_since_epoch().count();
+
+        // Load file content
+        std::ifstream fileStream(path, std::ios::binary);
+        if (fileStream) {
+            std::ostringstream oss;
+            oss << fileStream.rdbuf();
+            std::string contentString = oss.str();
+            content = new ngByte[contentString.size()];
+            std::memcpy(content, contentString.c_str(), contentString.size());
+        }
+    }
 
     ngBool File::exists() const {
-        return ngStdFileSystem::exists(path);
+        return isExists;
     }
 
     ngBool File::isFile() const {
-        return ngStdFileSystem::is_regular_file(path);
+        return isFileFlag;
+    }
+
+    ngString File::getPath() const{
+        return path;
     }
 
     ngString File::getFileName() const {
-        return path.filename().string();
+        return fileName;
     }
 
     ngString File::getExtensionsName() const {
-        return path.extension().string();
+        return extensionsName;
     }
 
-    uint64 File::getFileSize() const {
-        return ngStdFileSystem::file_size(path);
+    uint64_t File::getFileSize() const {
+        return fileSize;
     }
 
     ngString File::getFileType() const {
-        return getExtensionsName();
+        return fileType;
     }
 
     ngStdTimeType File::getModificationTime() const {
-        std::filesystem::file_time_type time = ngStdFileSystem::last_write_time(path);
-        std::chrono::system_clock::duration duration = time.time_since_epoch();
-        ngStdTimeType milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
-        return milliseconds;
+        return modificationTime;
+    }
+
+    const ngByte* File::getContentByBinary() const {
+        return content;
+    }
+
+    ngString File::getContentByString() const {
+        ngString contentString;
+        const ngByte* binaryContent = getContentByBinary();
+        if (binaryContent != nullptr) {
+            std::stringstream ss;
+            ss.write(reinterpret_cast<const char*>(binaryContent), getFileSize());
+            contentString = ss.str();
+        }
+        return contentString;
+    }
+
+        ngString File::getAbsoluteURL() const {
+        ngStdFileSystem::path filePath(path);
+        return ngStdFileSystem::absolute(filePath).string();
+    }
+
+    ngString File::getRelativeURL(const ngString& basePath) const {
+        ngStdFileSystem::path filePath(path);
+        ngStdFileSystem::path base(basePath);
+        return ngStdFileSystem::relative(filePath, base).string();
+    }
+
+    void File::forceUpdate(){
+        initialize();
     }
 
 } // namespace ngFileSystem

@@ -1,10 +1,9 @@
 #pragma once
 #include "../../preclude/preclude.h"
+
 #include <ctime>
-#include <filesystem>
 
 using ngStdTimeType = std::time_t;
-namespace ngStdFileSystem = std::filesystem;
 
 namespace ngFileSystem {
 
@@ -15,14 +14,30 @@ namespace ngFileSystem {
 
         ngBool exists() const;
         ngBool isFile() const;
+        ngString getPath() const;
         ngString getFileName() const;
         ngString getExtensionsName() const;
-        uint64 getFileSize() const;
+        uint64_t getFileSize() const;
         ngString getFileType() const;
         ngStdTimeType getModificationTime() const;
+        const ngByte* getContentByBinary() const;
+        ngString getContentByString() const;
+        ngString getAbsoluteURL() const;
+        ngString getRelativeURL(const ngString& basePath) const;
+        void forceUpdate();
 
     private:
-        ngStdFileSystem::path path;
+        ngString path;
+        ngBool isExists;
+        ngBool isFileFlag;
+        ngString fileName;
+        ngString extensionsName;
+        uint64_t fileSize;
+        ngString fileType;
+        ngStdTimeType modificationTime;
+        ngByte* content;
+
+        void initialize();
     };
 
 } // namespace ngFileSystem
