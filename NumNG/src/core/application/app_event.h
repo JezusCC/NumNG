@@ -3,7 +3,7 @@
 
 namespace Core {
 	/**
-	 * Êó±êÊı¾İ
+	 * é¼ æ ‡æ•°æ®
 	 */
 	struct MouseEventData {
 		uint32 x;

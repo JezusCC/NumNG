@@ -7,11 +7,11 @@ namespace ngFpm {
 	constexpr ngFloat Epsilon = 0.0000000001;
 
 	/**
-	* ÅĞ¶ÏÁ½ÊıÖµÊÇ·ñ½üËÆÏàµÈ
-	* @param a ²ÎÊıA
-	* @param b ²ÎÊıB
-	* @param epsilon Îó²î¾«¶È
-	* @return Èç¹ûÁ½Öµ½üËÆÏàµÈ·µ»ØÕæ£¬·ñÔò·µ»Ø¼Ù
+	* åˆ¤æ–­ä¸¤æ•°å€¼æ˜¯å¦è¿‘ä¼¼ç›¸ç­‰
+	* @param a å‚æ•°A
+	* @param b å‚æ•°B
+	* @param epsilon è¯¯å·®ç²¾åº¦
+	* @return å¦‚æœä¸¤å€¼è¿‘ä¼¼ç›¸ç­‰è¿”å›çœŸï¼Œå¦åˆ™è¿”å›å‡
 	*/
 	template <typename T>
 	bool isEqual(const T& a, const T& b, const T& epsilon)
@@ -21,9 +21,9 @@ namespace ngFpm {
 	}
 
 	/**
-	* ¹éÒ»»¯ÊıÖµ
-	* @param value ´ı¹éÒ»»¯ÊıÖµ
-	* @return ¹éÒ»»¯ºóµÄÊıÖµ
+	* å½’ä¸€åŒ–æ•°å€¼
+	* @param value å¾…å½’ä¸€åŒ–æ•°å€¼
+	* @return å½’ä¸€åŒ–åçš„æ•°å€¼
 	*/
 	template <typename T>
 	constexpr ngFloat NumricNormalized(T value) {
@@ -33,13 +33,13 @@ namespace ngFpm {
 	}
 
 	/**
-	* ½«ÊıÖµvalue´ÓÒ»¸öÇø¼äÓ³Éäµ½ÁíÒ»¸öÇø¼ä(ÊıÖµËõÕ­²»°²È«)
-	* @param value Ó³ÉäÖµ
-	* @param srcMin Ô´Çø¼äÆğÊ¼Öµ
-	* @param srcMax Ô´Çø¼äÖÕµãÖµ
-	* @param dstMin Ä¿±êÇø¼äÆğÊ¼Öµ
-	* @param dstMax Ä¿±êÇø¼äÖÕµãÖµ
-	* @return Ó³Éäµ½ĞÂÇø¼äºóµÄÖµ
+	* å°†æ•°å€¼valueä»ä¸€ä¸ªåŒºé—´æ˜ å°„åˆ°å¦ä¸€ä¸ªåŒºé—´(æ•°å€¼ç¼©çª„ä¸å®‰å…¨)
+	* @param value æ˜ å°„å€¼
+	* @param srcMin æºåŒºé—´èµ·å§‹å€¼
+	* @param srcMax æºåŒºé—´ç»ˆç‚¹å€¼
+	* @param dstMin ç›®æ ‡åŒºé—´èµ·å§‹å€¼
+	* @param dstMax ç›®æ ‡åŒºé—´ç»ˆç‚¹å€¼
+	* @return æ˜ å°„åˆ°æ–°åŒºé—´åçš„å€¼
 	*/
 	template <typename T>
 	T NumricMapping(T value, T srcMin, T srcMax, T dstMin, T dstMax) {

@@ -6,27 +6,27 @@ namespace ngCore {
 
 	/**
 	 * ngEnviroment
-	 * ng ÔËĞĞ»·¾³£¬°üº¬ÒıÇæÆô¶¯µÄºËĞÄ²ÎÊı¼°ÆäÄÚÈİ
+	 * ng è¿è¡Œç¯å¢ƒï¼ŒåŒ…å«å¼•æ“å¯åŠ¨çš„æ ¸å¿ƒå‚æ•°åŠå…¶å†…å®¹
 	 */
 	struct ngEnviroment {
-		//»·¾³³õÊ¼»¯±êÊ¶
+		//ç¯å¢ƒåˆå§‹åŒ–æ ‡è¯†
 		ngBool env_init;
 		ngBool graphic_lib_init;
 		ngBool texture_lib_init;
 		ngBool font_lib_init;
 		ngBool audio_lib_init;
-		//³ÌĞòÔËĞĞ²ÎÊı¸öÊı
+		//ç¨‹åºè¿è¡Œå‚æ•°ä¸ªæ•°
 		int32 arg_nums;
-		//³ÌĞòÔËĞĞ²ÎÊıÖµÖ¸Õë
+		//ç¨‹åºè¿è¡Œå‚æ•°å€¼æŒ‡é’ˆ
 		ngChar** arg_array;
 	};
 
 	/**
-	 * ´´½¨Ò»¸öÎ¨Ò»µÄÔËĞĞ»·¾³£¬µ±»·¾³²»ĞèÒªÊ±±ØĞëµ÷ÓÃÏàÓ¦µÄÏú»Ùº¯ÊıÒÔ±ãÇå³ıµôÔËĞĞ»·¾³
+	 * åˆ›å»ºä¸€ä¸ªå”¯ä¸€çš„è¿è¡Œç¯å¢ƒï¼Œå½“ç¯å¢ƒä¸éœ€è¦æ—¶å¿…é¡»è°ƒç”¨ç›¸åº”çš„é”€æ¯å‡½æ•°ä»¥ä¾¿æ¸…é™¤æ‰è¿è¡Œç¯å¢ƒ
 	 */
 	ngEnviroment* createNgEnviroment(int argc,char** argv);
 	/**
-	 * Ïú»ÙÔËĞĞ»·¾³
+	 * é”€æ¯è¿è¡Œç¯å¢ƒ
 	 */
 	void destroyNgEnviroment(ngEnviroment* env);
 }

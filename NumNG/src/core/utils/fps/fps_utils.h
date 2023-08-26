@@ -4,8 +4,8 @@
 
 namespace ngUtils {
 	/**
-	 * ´´½¨Ò»¸öFPS¼ÆÊıÆ÷£¬ĞèÒªÃ¿Ö¡Ñ­»·µ÷ÓÃ
-	 * FPS¼ÆÊıÆ÷Ê¹ÓÃÊ±ÖÓ¼ÆÊı·¨£¬Ã¿Ãë¸üĞÂÒ»´ÎFPS
+	 * åˆ›å»ºä¸€ä¸ªFPSè®¡æ•°å™¨ï¼Œéœ€è¦æ¯å¸§å¾ªç¯è°ƒç”¨
+	 * FPSè®¡æ•°å™¨ä½¿ç”¨æ—¶é’Ÿè®¡æ•°æ³•ï¼Œæ¯ç§’æ›´æ–°ä¸€æ¬¡FPS
 	 */
 	class FPSCounter :public UtilBase {
 	public:
@@ -17,18 +17,18 @@ namespace ngUtils {
 
 		~FPSCounter();
 
-		//¸Ãº¯Êı±ØĞëÃ¿Ö¡±»µ÷ÓÃ
+		//è¯¥å‡½æ•°å¿…é¡»æ¯å¸§è¢«è°ƒç”¨
 		void update();
 		//
 		int32 getFps()const;
 
 		ngString toString();
 	private:
-		//´´½¨Ò»¸öÒ»ÃëµÄÖØ¸´¶¨Ê±Æ÷
+		//åˆ›å»ºä¸€ä¸ªä¸€ç§’çš„é‡å¤å®šæ—¶å™¨
 		Timer* m_timer;
 		//
 		int32 m_fps_count;
-		//Ã¿Ãë¼ÆËãÒ»´Î
+		//æ¯ç§’è®¡ç®—ä¸€æ¬¡
 		int32 m_fps;
 	};
 }

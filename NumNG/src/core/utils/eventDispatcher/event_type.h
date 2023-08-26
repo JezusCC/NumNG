@@ -4,17 +4,17 @@
 
 namespace ngUtils {
 	enum class EventType {
-		//ϵͳ����Ϣ
+		//系统级消息
 		EVENT_SYSTEM,
-		//Ӧ�ü���Ϣ
+		//应用级消息
 		EVENT_APPLICATION,
-		//GUI����Ϣ
+		//GUI级消息
 		EVENT_GUI,
-		//�ű�֪ͨ
+		//脚本通知
 		EVENT_SCRIPT,
-		//�û��ű�
+		//用户脚本
 		EVENT_USER_SCRIPT,
-		//�û�����Ϣ
+		//用户级消息
 		EVENT_CUSTOM0,
 		EVENT_CUSTOM1,
 		EVENT_CUSTOM2
@@ -30,8 +30,8 @@ namespace ngUtils {
 #define _NG_DEFINE_EVENT_FUNCTION_NORMAL(_f) ngUtils::EventFunctionType{#_f,_f}
 #define _NG_DEFINE_EVENT_FUNCTION_CLASS(_f,_o) ngUtils::EventFunctionType{#_f,std::bind(&_f,&_o,std::placeholders::_1)}
 
-	//������ͨ����
+	//创建普通函数
 #define EV_CUSTOM_EVENT_FUNCTION(func_name) _NG_DEFINE_EVENT_FUNCTION_NORMAL(func_name)
-	//�����������Ա�������¼�����
+	//创建基于类成员函数的事件函数
 #define EV_CUSTOM_CLASS_EVENT_FUNCTION(func_name,object) _NG_DEFINE_EVENT_FUNCTION_CLASS(func_name,object)
 }

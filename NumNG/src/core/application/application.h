@@ -3,7 +3,7 @@
 
 namespace ngCore {
 	/**
-	 * ´´½¨Ò»¸öÓ¦ÓÃ³ÌĞò£¬¸ÃÓ¦ÓÃ³ÌĞò¾ßÓĞ»ù±¾µÄÊôĞÔ
+	 * åˆ›å»ºä¸€ä¸ªåº”ç”¨ç¨‹åºï¼Œè¯¥åº”ç”¨ç¨‹åºå…·æœ‰åŸºæœ¬çš„å±æ€§
 	 */
 	class Application {
 	public:
@@ -11,60 +11,60 @@ namespace ngCore {
 		virtual ~Application() = default;
 
 		/**
-		 * ÉèÖÃ´°¿Ú±êÌâ
-		 * @param title ±êÌâ
+		 * è®¾ç½®çª—å£æ ‡é¢˜
+		 * @param title æ ‡é¢˜
 		 */
 		void setTitle(const ngString& title);
 		/**
-		 * ÉèÖÃ´°¿Ú¿í
-		 * @param width ¿í
+		 * è®¾ç½®çª—å£å®½
+		 * @param width å®½
 		 */
 		void setWidth(uint32 width);
 		/**
-		 * ÉèÖÃ´°¿Ú¸ß
-		 * @param height ¸ß
+		 * è®¾ç½®çª—å£é«˜
+		 * @param height é«˜
 		 */
 		void setHeight(uint32 height);
 		/**
-		 * ÉèÖÃ´°¿Ú³ß´ç
-		 * @param width ¿í
-		 * @param height ¸ß
+		 * è®¾ç½®çª—å£å°ºå¯¸
+		 * @param width å®½
+		 * @param height é«˜
 		 */
 		void setSize(uint32 width, uint32 height);
 		/**
-		 * ÉèÖÃ´°¿ÚÎ»ÖÃ
-		 * @param pos_x X ×ø±ê
+		 * è®¾ç½®çª—å£ä½ç½®
+		 * @param pos_x X åæ ‡
 		 */
 		void setPositionX(uint32 pos_x);
 		/**
-		 *ÉèÖÃ´°¿ÚÎ»ÖÃ
-		 * @param pos_y Y ×ø±ê
+		 *è®¾ç½®çª—å£ä½ç½®
+		 * @param pos_y Y åæ ‡
 		 */
 		void setPositionY(uint32 pos_y);
 		/**
-		 * ÉèÖÃ´°¿ÚÎ»ÖÃ
-		 * @param pos_x X ×ø±ê
-		 * @param pos_y Y ×ø±ê
+		 * è®¾ç½®çª—å£ä½ç½®
+		 * @param pos_x X åæ ‡
+		 * @param pos_y Y åæ ‡
 		 */
 		void setPosition(uint32 pos_x, uint32 pos_y);
 		/**
-		 *»ñÈ¡´°¿Ú±êÌâ
+		 *è·å–çª—å£æ ‡é¢˜
 		 */
 		ngString getTitle()const;
 		/**
-		 * »ñÈ¡´°¿Ú¿í
+		 * è·å–çª—å£å®½
 		 */
 		uint32 getWidth()const;
 		/**
-		 * »ñÈ¡´°¿Ú¸ß
+		 * è·å–çª—å£é«˜
 		 */
 		uint32 getHeight()const;
 		/**
-		 * »ñÈ¡´°¿ÚX×ø±ê
+		 * è·å–çª—å£Xåæ ‡
 		 */
 		uint32 getPositionX()const;
 		/**
-		 * »ñÈ¡´°¿ÚY×ø±ê
+		 * è·å–çª—å£Yåæ ‡
 		 */
 		uint32 getPositionY()const;
 

@@ -4,7 +4,7 @@
 namespace ngUtils {
 	/*
 	* UUID
-	* ²úÉúÒ»¸öUUID£¬¸ÃIDÎ¨Ò»ÇÒ²»¿É¸ü¸Ä
+	* äº§ç”Ÿä¸€ä¸ªUUIDï¼Œè¯¥IDå”¯ä¸€ä¸”ä¸å¯æ›´æ”¹
 	*/
 	class UUID :public UtilBase {
 	public:
@@ -20,7 +20,7 @@ namespace ngUtils {
 		ngBool operator!=(const UUID& value)const;
 
 		/*
-		* ·µ»ØUUIDµÄ×Ö·û´®
+		* è¿”å›UUIDçš„å­—ç¬¦ä¸²
 		*/
 		ngString getUUID()const;
 

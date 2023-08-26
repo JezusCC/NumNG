@@ -9,7 +9,7 @@ struct ImGuiIO;
 namespace ngCore {
 
 	/**
-	 * ´´½¨Ò»¸ö°üº¬2DäÖÈ¾Æ÷µÄ´°¿Ú£¬¸Ã´°¿Ú¾ßÓĞÏà¹ØÉÏÏÂÎÄºÍSDLäÖÈ¾Æ÷
+	 * åˆ›å»ºä¸€ä¸ªåŒ…å«2Dæ¸²æŸ“å™¨çš„çª—å£ï¼Œè¯¥çª—å£å…·æœ‰ç›¸å…³ä¸Šä¸‹æ–‡å’ŒSDLæ¸²æŸ“å™¨
 	 */
 	class Window2D :public Application {
 	public:
@@ -22,11 +22,11 @@ namespace ngCore {
 		ImGuiIO getGuiOption()const;
 
 		/**
-		 * »ñÈ¡FPS
+		 * è·å–FPS
 		 */
 		ngFloat getFramerate()const;
 		/**
-		 * ÉèÖÃ´°¿Ú±êÌâ
+		 * è®¾ç½®çª—å£æ ‡é¢˜
 		 */
 		void setTitle(const ngString& title);
 		void setPosition(uint32 pos_x, uint32 pos_y);
@@ -42,7 +42,7 @@ namespace ngCore {
 
 	private:
 		/**
-		 * ´´½¨´°¿Ú
+		 * åˆ›å»ºçª—å£
 		 */
 		bool create();
 

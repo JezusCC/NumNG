@@ -4,8 +4,8 @@
 namespace ngUtils {
 	/*
 	* Hash
-	* ¸ù¾İ¹şÏ£Ëã·¨²úÉúÒ»¸ö¹şÏ£±àÂë
-	* Õâ¸öÀàÈ·±£ÔÚÈÎÒâ»úÆ÷²úÉúÏàÍ¬µÄ½á¹û
+	* æ ¹æ®å“ˆå¸Œç®—æ³•äº§ç”Ÿä¸€ä¸ªå“ˆå¸Œç¼–ç 
+	* è¿™ä¸ªç±»ç¡®ä¿åœ¨ä»»æ„æœºå™¨äº§ç”Ÿç›¸åŒçš„ç»“æœ
 	*/
 	class Hash :public UtilBase {
 	public:
@@ -18,7 +18,7 @@ namespace ngUtils {
 		ngBool operator==(const Hash& value)const;
 		ngBool operator!=(const Hash& value)const;
 		/*
-		* »ñÈ¡¹şÏ£±àÂë
+		* è·å–å“ˆå¸Œç¼–ç 
 		*/
 		ngInt getCode()const;
 

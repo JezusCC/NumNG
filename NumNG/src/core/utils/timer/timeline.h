@@ -3,12 +3,12 @@
 
 namespace ngUtils {
 	/**
-	 * ´´½¨Ò»¸öÊ±¼äÖá¶ÔÏó£¬¸ÃÊ±¼äÖá¼ÇÂ¼×Ô¶ÔÏó²úÉúÒÔÀ´¾­¹ıµÄtickÊı
-	 * ¸Ãtick³¤¶ÈÈ¡¾öÓÚ¾«¶È£¬Ä¿Ç°Ìá¹©µÄ¾«¶ÈÓĞ
-	 * Ãë
-	 * ºÁÃë
-	 * Î¢Ãë
-	 * ÈıÖÖ¼¶±ğ,Ä¬ÈÏ¾«¶ÈÎªºÁÃë
+	 * åˆ›å»ºä¸€ä¸ªæ—¶é—´è½´å¯¹è±¡ï¼Œè¯¥æ—¶é—´è½´è®°å½•è‡ªå¯¹è±¡äº§ç”Ÿä»¥æ¥ç»è¿‡çš„tickæ•°
+	 * è¯¥tické•¿åº¦å–å†³äºç²¾åº¦ï¼Œç›®å‰æä¾›çš„ç²¾åº¦æœ‰
+	 * ç§’
+	 * æ¯«ç§’
+	 * å¾®ç§’
+	 * ä¸‰ç§çº§åˆ«,é»˜è®¤ç²¾åº¦ä¸ºæ¯«ç§’
 	 */
 	class Timeline {
 	public:
@@ -18,10 +18,10 @@ namespace ngUtils {
 			Micro
 		};
 	public:
-		//´´½¨Ò»¸ö¾«¶ÈÎªpercisionµÄÊ±¼äÖá
+		//åˆ›å»ºä¸€ä¸ªç²¾åº¦ä¸ºpercisionçš„æ—¶é—´è½´
 		Timeline(Precision precision = Precision::Milli);
 
-		//»ñÈ¡×ÔÆô¶¯Ê±ÔËĞĞµÄtick
+		//è·å–è‡ªå¯åŠ¨æ—¶è¿è¡Œçš„tick
 		ngInt getTick()const;
 
 		ngFloat getSeconds()const;
@@ -29,11 +29,11 @@ namespace ngUtils {
 		Timeline::Precision getPrecision()const;
 
 	private:
-		//³õÊ¼tick
+		//åˆå§‹tick
 		ngInt m_init_tick;
-		//ÔËĞĞtick
+		//è¿è¡Œtick
 		ngInt m_tick;
-		//ÔËĞĞ¾«¶È
+		//è¿è¡Œç²¾åº¦
 		Precision m_precision;
 
 		std::chrono::time_point<std::chrono::steady_clock> m_time_point;

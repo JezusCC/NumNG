@@ -4,10 +4,10 @@
 /*
 * @description
 * xtype.h
-* ¸ÃÍ·ÎÄ¼þ¶¨ÒåÁËNumNGÊ¹ÓÃµÄÊý¾ÝÀàÐÍ
-* ÎªÁËÎ¬³Ö¸÷Ä£¿éÖ®¼äµÄÊý¾ÝÀàÐÍÍ¨ÓÃ£¬ËùÓÐÎÄ¼þÓ¦¾¡Á¿Ê¹ÓÃ¸ÃÍ·ÎÄ¼þÖÐ¶¨ÒåµÄ±äÁ¿½øÐÐÉùÃ÷
+* è¯¥å¤´æ–‡ä»¶å®šä¹‰äº†NumNGä½¿ç”¨çš„æ•°æ®ç±»åž‹
+* ä¸ºäº†ç»´æŒå„æ¨¡å—ä¹‹é—´çš„æ•°æ®ç±»åž‹é€šç”¨ï¼Œæ‰€æœ‰æ–‡ä»¶åº”å°½é‡ä½¿ç”¨è¯¥å¤´æ–‡ä»¶ä¸­å®šä¹‰çš„å˜é‡è¿›è¡Œå£°æ˜Ž
 * @author cytus
-* @date 2023Äê6ÔÂ8ÈÕ21µã34·Ö
+* @date 2023å¹´6æœˆ8æ—¥21ç‚¹34åˆ†
 */
 
 using int32 = int32_t;
@@ -30,46 +30,46 @@ using wstring = std::wstring;
 
 /**
 * ngInt
-* ÕûÊýÀàÐÍ£¬¾¡Á¿Ê¹ÓÃ¸ÃÀàÐÍÀ´½øÐÐ±äÁ¿ÉùÃ÷
+* æ•´æ•°ç±»åž‹ï¼Œå°½é‡ä½¿ç”¨è¯¥ç±»åž‹æ¥è¿›è¡Œå˜é‡å£°æ˜Ž
 */
 using ngInt = int64;
 /**
 * ngUint
-* ÎÞ·ûºÅÕûÊýÀàÐÍ£¬ÕûÊýÀàÐÍµÄÎÞ·ûºÅ°æ±¾
+* æ— ç¬¦å·æ•´æ•°ç±»åž‹ï¼Œæ•´æ•°ç±»åž‹çš„æ— ç¬¦å·ç‰ˆæœ¬
 */
 using ngUInt = uint64;
 /**
 * ngFloat
-* ¸¡µãÊýÀàÐÍ£¬¾¡Á¿Ê¹ÓÃ¸ÃÀàÐÍÀ´½øÐÐ±äÁ¿ÉùÃ÷
+* æµ®ç‚¹æ•°ç±»åž‹ï¼Œå°½é‡ä½¿ç”¨è¯¥ç±»åž‹æ¥è¿›è¡Œå˜é‡å£°æ˜Ž
 */
 using ngFloat = float64;
 /**
 * ngChar
-* ×Ö·ûÀàÐÍ£¬¾¡Á¿Ê¹ÓÃ¸ÃÀàÐÍÀ´½øÐÐ±äÁ¿ÉùÃ÷
+* å­—ç¬¦ç±»åž‹ï¼Œå°½é‡ä½¿ç”¨è¯¥ç±»åž‹æ¥è¿›è¡Œå˜é‡å£°æ˜Ž
 */
 using ngChar = char8;
 /**
 * ngUChar
-* ÎÞ·ûºÅ×Ö·ûÀàÐÍ£¬×Ö·ûÀàÐÍµÄÎÞ·ûºÅ°æ±¾
+* æ— ç¬¦å·å­—ç¬¦ç±»åž‹ï¼Œå­—ç¬¦ç±»åž‹çš„æ— ç¬¦å·ç‰ˆæœ¬
 */
 using ngUChar = uchar8;
 /**
 * ngByte
-* ×Ö½ÚÀàÐÍ£¬±íÊ¾Ò»¸ö×Ö½ÚµÄÊý¾Ý
+* å­—èŠ‚ç±»åž‹ï¼Œè¡¨ç¤ºä¸€ä¸ªå­—èŠ‚çš„æ•°æ®
 */
 using ngByte = uchar8;
 /**
 * ngBool
-* ²¼¶ûÀàÐÍ£¬¾¡Á¿Ê¹ÓÃ¸ÃÀàÐÍÀ´½øÐÐ±äÁ¿ÉùÃ÷
+* å¸ƒå°”ç±»åž‹ï¼Œå°½é‡ä½¿ç”¨è¯¥ç±»åž‹æ¥è¿›è¡Œå˜é‡å£°æ˜Ž
 */
 using ngBool = bool;
 /**
 * ngString
-* ×Ö·û´®ÀàÐÍ£¬¾¡Á¿Ê¹ÓÃ¸ÃÀàÐÍÀ´½øÐÐ±äÁ¿ÉùÃ÷
+* å­—ç¬¦ä¸²ç±»åž‹ï¼Œå°½é‡ä½¿ç”¨è¯¥ç±»åž‹æ¥è¿›è¡Œå˜é‡å£°æ˜Ž
 */
 using ngString = string;
 /**
 * ngCNString
-* ¿í×Ö·û´®ÀàÐÍ£¬×Ö·û´®µÄ¿í×Ö·û°æ±¾£¬¿ÉÈÝÄÉÖÐÎÄ
+* å®½å­—ç¬¦ä¸²ç±»åž‹ï¼Œå­—ç¬¦ä¸²çš„å®½å­—ç¬¦ç‰ˆæœ¬ï¼Œå¯å®¹çº³ä¸­æ–‡
 */
 using ngCNString = wstring;

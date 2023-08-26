@@ -2,7 +2,7 @@
 
 namespace ngUtils {
 //	/*
-//	* ÉùÃ÷Í¨ÓÃµÄÊÂ¼şÊı¾İ
+//	* å£°æ˜é€šç”¨çš„äº‹ä»¶æ•°æ®
 //	*/
 //	template<typename T>
 //	struct EventDataType {};
@@ -13,13 +13,13 @@ namespace ngUtils {
 //			_struct _name;\
 //	}
 //	/**
-//	 * ¶¨ÒåÊÂ¼şÊı¾İÀàĞÍ£¬¸ÃÀàĞÍ±ØĞëÊÇÒ»¸ö½á¹¹Ìå£¬ÊÂ¼ş·Ö·¢Æ÷×ª·¢ÊÂ¼şÊ±Í¨¹ıname»ñÈ¡µ½×ª·¢µÄÊı¾İ
+//	 * å®šä¹‰äº‹ä»¶æ•°æ®ç±»å‹ï¼Œè¯¥ç±»å‹å¿…é¡»æ˜¯ä¸€ä¸ªç»“æ„ä½“ï¼Œäº‹ä»¶åˆ†å‘å™¨è½¬å‘äº‹ä»¶æ—¶é€šè¿‡nameè·å–åˆ°è½¬å‘çš„æ•°æ®
 //	 */
 //#define EV_CUSTOM_EVENT_DATA_DEFINE(_struct,_name) EV_SPECIALIZATION_EVENT_DATA(_struct,_name)
 //#define EV_GET_CUSTOM_EVENT_DATA_TYPE(_struct) ngUtils::EventDataType<_struct>
 
-	//¿ÕµÄÊÂ¼şÀàĞÍ
-	//ÓÃ»§¿ÉÒÔÀ©Õ¹³ö×Ô¶¨ÒåµÄEventData£¬µ«ÊÇ½ÓÊÕÊÂ¼şÖĞĞèÒª½øĞĞ×ª»»
+	//ç©ºçš„äº‹ä»¶ç±»å‹
+	//ç”¨æˆ·å¯ä»¥æ‰©å±•å‡ºè‡ªå®šä¹‰çš„EventDataï¼Œä½†æ˜¯æ¥æ”¶äº‹ä»¶ä¸­éœ€è¦è¿›è¡Œè½¬æ¢
 	class EventData {
 	public:
 		EventData() = default;

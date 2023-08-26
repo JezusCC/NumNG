@@ -15,8 +15,8 @@ namespace ngUtils {
 		void unsubscribe(EventType eventType, EventFunction func);
 
 		/**
-		* ·Ö·¢ÊÂ¼ş£¬¿É½«ÊÂ¼ş·Ö·¢¸øËùÓĞ¶©ÔÄÕß
-		* @param eventDataÓ¦ÊÇÒ»¸ö·â×°²ÎÊı£¬Îª½á¹¹Ìå
+		* åˆ†å‘äº‹ä»¶ï¼Œå¯å°†äº‹ä»¶åˆ†å‘ç»™æ‰€æœ‰è®¢é˜…è€…
+		* @param eventDataåº”æ˜¯ä¸€ä¸ªå°è£…å‚æ•°ï¼Œä¸ºç»“æ„ä½“
 		*/
 		void dispatch(EventType eventType, EventData* eventData) {
 			if (m_handlers.find(eventType) != m_handlers.end()) {
