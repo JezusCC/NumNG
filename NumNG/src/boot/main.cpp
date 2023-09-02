@@ -53,14 +53,11 @@ int main(int argc, char* argv[]) {
 	auto a4 = ngUtils::isEmpty(nullptr);
 	auto a5 = ngUtils::isEmpty(&a);
 
-	ngCore::Window2D window("Hello", 1366, 768);
+	ngCore::createRuntimeWindow(env, "Hello World", 1366, 768);
 
-	bool show_another_window = false;
-	bool my_tool_active = true;
-
-	while (window.shouldClose() == false) {
-		window.procEvent();
-
+	ngCore::runNgApplication(env, [](ngCore::ngEnviroment* env) {
+		bool show_another_window = false;
+		bool my_tool_active = true;
 		// Start the Dear ImGui frame
 		ImGui_ImplSDLRenderer_NewFrame();
 		ImGui_ImplSDL2_NewFrame();
@@ -120,9 +117,7 @@ int main(int argc, char* argv[]) {
 			ImGui::Text("%04d: Some text", n);
 		ImGui::EndChild();
 		ImGui::End();
-
-		window.clearBuffer();
-	}
+	});
 
 	ngCore::destroyNgEnviroment(env);
 

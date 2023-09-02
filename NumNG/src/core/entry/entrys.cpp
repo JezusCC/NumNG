@@ -32,11 +32,21 @@ namespace ngCore {
 		env->arg_nums = argc;
 		env->arg_array = argv;
 		env->env_init = true;
+
+		//初始化各种绑定函数
+		env->beforeRunFunc = [](ngEnviroment* env) {};
+		env->afterRunFunc = [](ngEnviroment* env) {};
+		env->updateFunc = [](ngEnviroment* env) {};
+
 		return env;
 	}
 
 	void destroyNgEnviroment(ngEnviroment* env)
 	{
+		if(env->window != nullptr){
+			delete env->window;
+		}
+
 		Mix_Quit();
 		TTF_Quit();
 		IMG_Quit();
@@ -44,4 +54,59 @@ namespace ngCore {
 		delete env;
 	}
 
+    void createRuntimeWindow(ngEnviroment *env, const ngString &title, int32 width, int32 height)
+    {
+		if(env != nullptr && env->env_init){
+			if(env->window == nullptr){
+				env->window = new Window2D(title,width,height);
+			}else{
+				SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"Window is already created");
+			}
+		}else{
+			SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"Environment is not initialized");
+		}
+    }
+    void runNgApplication(ngEnviroment *env, ngStd::function<void(ngEnviroment *env)> updateFunc)
+    {
+		if(env != nullptr && env->env_init){
+			env->updateFunc = updateFunc;
+			env->beforeRunFunc(env);
+			if(env->window != nullptr){
+			while(env->window->shouldClose() == false){
+				env->window->procEvent();
+				env->updateFunc(env);
+				env->window->clearBuffer();
+			}
+			env->afterRunFunc(env);
+			}else{
+				SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"Window is not created");
+			}
+		}else{
+			SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"Environment is not initialized");
+		}
+    }
+    void bindBeforeRunFunc(ngEnviroment *env, ngStd::function<void(ngEnviroment *env)> func)
+    {
+		if(env != nullptr && env->env_init){
+			env->beforeRunFunc = func;
+		}else{
+			SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"Environment is not initialized");
+		}
+    }
+    void bindAfterRunFunc(ngEnviroment *env, ngStd::function<void(ngEnviroment *env)> func)
+    {
+		if(env != nullptr && env->env_init){
+			env->afterRunFunc = func;
+		}else{
+			SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"Environment is not initialized");
+		}
+    }
+    void bindUpdateFunc(ngEnviroment *env, ngStd::function<void(ngEnviroment *env)> func)
+    {
+		if(env != nullptr && env->env_init){
+			env->updateFunc = func;
+		}else{
+			SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,"Environment is not initialized");
+		}
+    }
 }

@@ -1,41 +1,37 @@
 #pragma once
 #include "../../common/common.h"
+#include "tinyxml/tinyxml2.h"
 namespace ngUtils {
 	
-	class XMLDocument;
-	class XMLNode;
+	/**
+	 * @brief XML标签对象
+	 * 
+	 */
+	class ngXmlTag : public tinyxml2::XMLElement {
+	public:
+		ngXmlTag(const ngString& name);
+		~ngXmlTag();
+	private:
 
-	using ngTag = XMLNode;
+	};
 
-	class ngXml {
+	/**
+	 * @brief XML文档对象
+	 * 
+	 */
+	class ngXml : public tinyxml2::XMLDocument {
 	public:
 		/**
-		 * @brief 创建一个标准XML文档
-		 * 
-		 */
+		* 创建一个具有默认根标签的XML文档对象，根标签名为Root
+		*/
 		ngXml();
-		/**
-		 * @brief 从文件加载XML文档
-		 * 
-		 * @param path 
-		 */
 		ngXml(const ngString& path);
 		~ngXml();
 
-		ngBool appendChild(ngTag* tag);
-		
-		ngBool insertChild(ngTag* tag, ngTag* target);
-
-		void removeChild(ngTag* tag);
+		ngXmlTag* getRoot() const;
 
 	private:
-		//清理
-		void clear();
-		//初始化一个标准XML文档
-		void initStdXmlDocument();
-
-	private:
-		XMLDocument* document;
+		ngXmlTag* m_root;
 	};
 
 }
