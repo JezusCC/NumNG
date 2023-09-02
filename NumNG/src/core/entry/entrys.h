@@ -1,5 +1,4 @@
 #pragma once
-#include "../preclude/preclude.h"
 #include "../application/window2d.h"
 
 namespace ngCore {

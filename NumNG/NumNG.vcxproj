@@ -187,16 +187,17 @@
     <ClCompile Include="src\core\application\application.cpp" />
     <ClCompile Include="src\core\application\window2d.cpp" />
     <ClCompile Include="src\core\entry\entrys.cpp" />
-    <ClCompile Include="src\core\utils\color\color_utils.cpp" />
-    <ClCompile Include="src\core\utils\common\common.cpp" />
-    <ClCompile Include="src\core\utils\configLoader\config_loader.cpp" />
-    <ClCompile Include="src\core\utils\eventDispatcher\event_dispatcher.cpp" />
-    <ClCompile Include="src\core\utils\fps\fps_utils.cpp" />
-    <ClCompile Include="src\core\utils\hash\hash_utils.cpp" />
-    <ClCompile Include="src\core\utils\hash\uuid_utils.cpp" />
-    <ClCompile Include="src\core\utils\timer\timeline.cpp" />
-    <ClCompile Include="src\core\utils\timer\timer_utils.cpp" />
+    <ClCompile Include="src\editor\filesystem\file_system.cpp" />
     <ClCompile Include="src\test\test_main.cpp" />
+    <ClCompile Include="src\utils\color\color_utils.cpp" />
+    <ClCompile Include="src\utils\common\common.cpp" />
+    <ClCompile Include="src\utils\eventDispatcher\event_dispatcher.cpp" />
+    <ClCompile Include="src\utils\fps\fps_utils.cpp" />
+    <ClCompile Include="src\utils\hash\hash_utils.cpp" />
+    <ClCompile Include="src\utils\hash\uuid_utils.cpp" />
+    <ClCompile Include="src\utils\loader\config_utils\config_loader.cpp" />
+    <ClCompile Include="src\utils\timer\timeline.cpp" />
+    <ClCompile Include="src\utils\timer\timer_utils.cpp" />
     <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui.cpp" />
     <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui_demo.cpp" />
     <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui_draw.cpp" />
@@ -204,6 +205,8 @@
     <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui_impl_sdlrenderer.cpp" />
     <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui_tables.cpp" />
     <ClCompile Include="thirdpart\include\imgui4sdl2raw\imgui_widgets.cpp" />
+    <ClCompile Include="thirdpart\include\tinyxml\tinyxml2.cpp" />
+    <ClCompile Include="src\utils\loader\xml_utils\xml.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\application\application.h" />
@@ -211,22 +214,26 @@
     <ClInclude Include="src\core\application\kbms_listener.h" />
     <ClInclude Include="src\core\application\window2d.h" />
     <ClInclude Include="src\core\entry\entrys.h" />
+    <ClInclude Include="src\core\fileSystem\file\file.h" />
+    <ClInclude Include="src\core\fileSystem\file_system.h" />
     <ClInclude Include="src\core\gui\gui_item_base.h" />
-    <ClInclude Include="src\core\preclude\preclude.h" />
-    <ClInclude Include="src\core\preclude\xtype.h" />
-    <ClInclude Include="src\core\utils\color\color_utils.h" />
-    <ClInclude Include="src\core\utils\common\common.h" />
-    <ClInclude Include="src\core\utils\configLoader\config_loader.h" />
-    <ClInclude Include="src\core\utils\eventDispatcher\event_data.h" />
-    <ClInclude Include="src\core\utils\eventDispatcher\event_dispatcher.h" />
-    <ClInclude Include="src\core\utils\eventDispatcher\event_type.h" />
-    <ClInclude Include="src\core\utils\FPM\fpm_utils.h" />
-    <ClInclude Include="src\core\utils\fps\fps_utils.h" />
-    <ClInclude Include="src\core\utils\hash\hash_utils.h" />
-    <ClInclude Include="src\core\utils\hash\uuid_utils.h" />
-    <ClInclude Include="src\core\utils\timer\timeline.h" />
-    <ClInclude Include="src\core\utils\timer\timer_utils.h" />
-    <ClInclude Include="src\core\utils\utils.h" />
+    <ClInclude Include="src\editor\filesystem\file_system.h" />
+    <ClInclude Include="src\preclude\preclude.h" />
+    <ClInclude Include="src\preclude\xtype.h" />
+    <ClInclude Include="src\utils\color\color_utils.h" />
+    <ClInclude Include="src\utils\common\common.h" />
+    <ClInclude Include="src\utils\eventDispatcher\event_data.h" />
+    <ClInclude Include="src\utils\eventDispatcher\event_dispatcher.h" />
+    <ClInclude Include="src\utils\eventDispatcher\event_type.h" />
+    <ClInclude Include="src\utils\FPM\fpm_utils.h" />
+    <ClInclude Include="src\utils\fps\fps_utils.h" />
+    <ClInclude Include="src\utils\hash\hash_utils.h" />
+    <ClInclude Include="src\utils\hash\uuid_utils.h" />
+    <ClInclude Include="src\utils\loader\config_utils\config_loader.h" />
+    <ClInclude Include="src\utils\manager\manager.h" />
+    <ClInclude Include="src\utils\timer\timeline.h" />
+    <ClInclude Include="src\utils\timer\timer_utils.h" />
+    <ClInclude Include="src\utils\utils.h" />
     <ClInclude Include="thirdpart\include\imgui4sdl2raw\imconfig.h" />
     <ClInclude Include="thirdpart\include\imgui4sdl2raw\imgui.h" />
     <ClInclude Include="thirdpart\include\imgui4sdl2raw\imgui_impl_sdl.h" />
@@ -322,6 +329,8 @@
     <ClInclude Include="thirdpart\include\SDL2\SDL_version.h" />
     <ClInclude Include="thirdpart\include\SDL2\SDL_video.h" />
     <ClInclude Include="thirdpart\include\SDL2\SDL_vulkan.h" />
+    <ClInclude Include="thirdpart\include\tinyxml\tinyxml2.h" />
+    <ClInclude Include="src\utils\loader\xml_utils\xmll.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="thirdpart\include\imgui4sdl2raw\LICENSE.txt" />

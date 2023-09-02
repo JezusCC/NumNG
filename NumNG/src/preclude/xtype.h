@@ -73,3 +73,9 @@ using ngString = string;
 * 宽字符串类型，字符串的宽字符版本，可容纳中文
 */
 using ngCNString = wstring;
+
+/**
+ * @brief 
+ * 
+ */
+using ngStdSizeType = size_t;

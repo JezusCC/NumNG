@@ -1,7 +1,7 @@
 #pragma once
 
 #include "./event_type.h"
-#include "../utils.h"
+#include "../common/common.h"
 
 namespace ngUtils {
 

@@ -1,11 +1,9 @@
-#include "../core/utils/utils.h"
+#include "../utils/utils.h"
 #include "../core/entry/entrys.h"
 
 #include "imgui4sdl2raw/imgui.h"
 #include "imgui4sdl2raw/imgui_impl_sdl.h"
 #include "imgui4sdl2raw/imgui_impl_sdlrenderer.h"
-
-#include "../core/utils/eventDispatcher/event_dispatcher.h"
 
 class MyEventData :public ngUtils::EventData {
 public:
@@ -47,6 +45,13 @@ int main(int argc, char* argv[]) {
 	ngFpm::NumricMapping<ngFloat>(127, 0, 255, 0.0, 1.0);
 
 	ngUtils::Color color = ngUtils::ParseStrToColor("#ffee3399");
+
+	int arr[3] = { 1,2,3 };
+	auto a1 = ngUtils::isEmpty<ngString>("");
+	auto a3 = ngUtils::isEmpty<int[]>(arr);
+	auto a2 = ngUtils::isEmpty<A>(a);
+	auto a4 = ngUtils::isEmpty(nullptr);
+	auto a5 = ngUtils::isEmpty(&a);
 
 	ngCore::Window2D window("Hello", 1366, 768);
 
@@ -90,7 +95,7 @@ int main(int argc, char* argv[]) {
 			ImGui::End();
 		}
 
-		// ´´½¨Ò»¸ö´øÓÐ²Ëµ¥À¸µÄÃûÎª¡°ÎÒµÄµÚÒ»¸ö¹¤¾ß¡±µÄ´°¿Ú¡£
+		// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ð²Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ÒµÄµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ß¡ï¿½ï¿½Ä´ï¿½ï¿½Ú¡ï¿½
 		ImGui::Begin("My First Tool", &my_tool_active, ImGuiWindowFlags_MenuBar);
 		if (ImGui::BeginMenuBar())
 		{
@@ -108,7 +113,7 @@ int main(int argc, char* argv[]) {
 		const float my_values[] = { 0.2f, 0.1f, 1.0f, 0.5f, 0.9f, 2.2f };
 		ImGui::PlotLines("Frame Times", my_values, IM_ARRAYSIZE(my_values));
 
-		// ÔÚ¹ö¶¯ÇøÓòÖÐÏÔÊ¾ÄÚÈÝ
+		// ï¿½Ú¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
 		ImGui::TextColored(ImVec4(1, 1, 0, 1), "Important Stuff");
 		ImGui::BeginChild("Scrolling");
 		for (int n = 0; n < 50; n++)

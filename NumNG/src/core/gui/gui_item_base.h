@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../utils/utils.h"
+#include "../../utils/utils.h"
 
 namespace ngCore {
 	struct Style {
@@ -41,7 +41,7 @@ namespace ngCore {
 		const ngString& getName()const;
 
 		void setStyle(Style style);
-		Style getStyle()const;
+		const Style& getStyle()const;
 
 	protected:
 		Style m_style;
